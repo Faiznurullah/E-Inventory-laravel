@@ -103,7 +103,7 @@ Berhubung Project ini saya selesaikan sendiri, namun banyak fitur dan banyak hal
 <h2 id="lisensi">📝 Lisensi</h2>
 
 - Copyright © 2022 Faiz Nurullah 
-- Si Dalah adalah aplikasi web open-source yang berlisensi dibawah lisensi MIT
+- E-inventory adalah aplikasi web open-source yang berlisensi dibawah lisensi MIT
 
 ---
 
