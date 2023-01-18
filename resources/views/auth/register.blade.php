@@ -1,15 +1,17 @@
 @extends('auth.layouts.app')
+@section('icon-cdn')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 @section('content')
 
 
 <section class="vh-90">
     <div class="container h-90">
       <div class="row d-flex align-items-center justify-content-center mt-5">
-        <div class="col-md-8 col-lg-7 col-xl-6">
+        <div class="col-md-4 col-lg-5 col-xl-5">
           <img src="https://i.ibb.co/71P5gKJ/undraw-Investor-update-re-qnuu-removebg-preview.png"
             class="img-fluid" alt="Phone image">
         </div>
-        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <div class="col-md-7 col-lg-6 col-xl-6 offset-xl-1">
           <form method="POST" action="{{ route('register') }}">
            @csrf
 
@@ -64,7 +66,13 @@
             <button type="submit" class="btn btn-success btn-lg btn-block">Sign up</button>
   
           </form>
-        </div>
+
+           <a href="{{ 'auth/google' }}" class="btn btn-outline-danger btn-lg btn-block mt-2"><i class="bi bi-google"></i> Sign up With Google</a>
+          
+            <a href="{{ Route('auth.facebook') }}"  class="btn btn-outline-primary btn-lg btn-block mt-2"><i class="bi bi-facebook"></i> Sign up With Facebook</a>
+          
+
+          </div>
       </div>
     </div>
   </section>

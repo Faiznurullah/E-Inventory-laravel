@@ -1,17 +1,16 @@
 <?php
 
 
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers;
-use App\Http\Controllers\DatabarangController;
-use App\Http\Controllers\JenisbarangController;
-use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\RelogController;
-
-
-
-
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\DatabarangController;
+use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\JenisbarangController;
+use App\Http\Controllers\KerusakanController;
 
 Route::get('/', function () {
     return view('auth.register');
@@ -19,6 +18,16 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth.login');
+});
+
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('auth/google', 'redirecToGoogle')->name('auth.google');
+    Route::get('callback/google', 'handleGoogleCallback');
+});
+
+Route::controller(FacebookController::class)->group(function(){
+    Route::get('auth/facebook', 'redirecToFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'handlefacebookCallback');
 });
 
 
@@ -57,6 +66,12 @@ Route::post('/verifikasipeminjaman/{id}', [PeminjamanController::class, 'verifik
 Route::get('/pengembalianbarang', [PeminjamanController::class, 'kembali'])->name('kembali');
 Route::post('/verifikasikembali', [PeminjamanController::class, 'verifikasikembali'])->name('verifikasikembali');
 Route::post('/verifikasipengembalian/{id}', [PeminjamanController::class, 'verifikasipengembalian'])->name('verifikasipengembalian');
+
+// Kerusakan Barang
+Route::get('/barangrusak', [KerusakanController::class, 'tambah'])->name('tambah');
+Route::post('/insertbarangrusak', [KerusakanController::class, 'insert'])->name('insert');
+Route::get('/databarangrusak', [KerusakanController::class, 'data'])->name('data');
+Route::get('/downloadpdfbarangrusak', [KerusakanController::class, 'downloadpdf'])->name('downloadpdf');
 
 });
 

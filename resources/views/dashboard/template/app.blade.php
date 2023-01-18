@@ -93,6 +93,22 @@
                 </div>
             </li>
 
+             <!-- Nav Item - Pages Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-bookmark"></i>
+                    <span>Kerusakan Barang</span>
+                </a>
+                <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Kelola data:</h6>
+                        <a class="collapse-item" href="/barangrusak">Lapor barang rusak</a>
+                        <a class="collapse-item" href="/databarangrusak">Data barang rusak</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -117,6 +133,8 @@
                     </div>
                 </div>
             </li>
+
+           
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

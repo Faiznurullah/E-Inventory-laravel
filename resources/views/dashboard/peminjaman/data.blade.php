@@ -41,16 +41,16 @@
                         <td><center>
                             @if($row->tersedia == 'ya')
 
-                            <a href= "{{  asset('/surat-peminjaman/'.$row->surat) }}" class="btn btn-success btn-sm">Lihat surat</a>
+                            <a href= "{{  asset('/surat-peminjaman/'.$row->surat) }}" class="btn btn-success btn-sm" target="_blank">Lihat surat</a>
 
                             @elseif($row->tersedia == 'tidak')
                            
-                            <a href= "{{  asset('/surat-peminjaman/'.$row->surat) }}" class="btn btn-success btn-sm">Lihat surat</a>
+                            <a href= "{{  asset('/surat-peminjaman/'.$row->surat) }}" class="btn btn-success btn-sm" target="_blank">Lihat surat</a>
 
 
                            @elseif($row->tersedia == 'kembali')
                            
-                           <a href = "{{  asset('/foto-kembali/'.$row->foto) }}" class="btn btn-success btn-sm" data-toggle="lightbox" data-gallery="gallery"> 
+                           <a href = "{{  asset('/foto-kembali/'.$row->foto) }}" class="btn btn-success btn-sm" target="_blank"> 
                              Lihat foto
                             </a>
                        

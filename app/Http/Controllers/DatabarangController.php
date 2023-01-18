@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use file;
 use App\Models\Databarang;
 use App\Models\Jenisbarang;
+use App\Models\Kerusakan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -149,6 +150,7 @@ class DatabarangController extends Controller
 
         if ($request->hasfile('foto') != null) {  
 
+            
             $file_name = $x->foto;
             $public_path = public_path('foto-barang/'.$file_name);
             unlink($public_path);
@@ -164,6 +166,12 @@ class DatabarangController extends Controller
                     'tersedia' => $request->tersedia
              ]);
 
+             Kerusakan::where('kode_barang', $x->kode_barang)
+             ->update([
+                    'kondisi' => 'baik'
+             ]);
+
+
             return redirect('/databarang')->with('Pesan', 'Data Sukses Diedit');
 
         }else{
@@ -175,6 +183,12 @@ class DatabarangController extends Controller
                     'kondisi' => $request->kondisi,
                     'tersedia' => $request->tersedia
              ]);
+
+             Kerusakan::where('kode_barang', $x->kode_barang)
+             ->update([
+                    'kondisi' => 'baik'
+             ]);
+
 
              return redirect('/databarang')->with('Pesan', 'Data Sukses Diedit');
             

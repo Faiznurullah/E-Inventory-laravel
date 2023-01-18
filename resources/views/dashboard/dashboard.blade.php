@@ -77,8 +77,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Account ID</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">ID-{{ Auth::user()->id }}</div>
+                            Account Status</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $a->kelas }}-{{ $a->id }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user-alt fa-2x text-gray-300"></i>
