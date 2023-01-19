@@ -22,7 +22,7 @@
         <!-- Custom styles for this page -->
     <link href="{!! asset('vendor/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet">
 
-   
+     
 </head>
 
 <body id="page-top">
@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-box"></i>
                 </div>
@@ -50,6 +50,16 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
+
+              <!-- Divider -->
+              <hr class="sidebar-divider my-0">
+
+              <!-- Nav Item - Dashboard -->
+              <li class="nav-item active">
+                  <a class="nav-link" href="/chart">
+                      <i class="fas fa-fw fa-chart-bar"></i>
+                      <span>Data Chart</span></a>
+              </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -254,6 +264,9 @@
  <!-- Core plugin JavaScript-->
  <script src="{!! asset('vendor/jquery-easing/jquery.easing.min.js') !!}"></script>
 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.js" type="text/javascript"></script>
+  
+
  <!-- Custom scripts for all pages-->
  <script src="{!! asset('js/dash/sb-admin-2.min.js') !!}"></script>
 
@@ -262,7 +275,14 @@
 
  <!-- Page level custom scripts -->
  <script src="{!! asset('js/dash/demo/chart-area-demo.js') !!}"></script>
+ 
  <script src="{!! asset('js/dash/demo/chart-bar-demo.js') !!}"></script>
+ @yield('bar')
+ 
+ @yield('bar1')
+
+ @yield('bar2')
+ 
  <!-- Page level plugins -->
  <script src="{!! asset('vendor/datatables/jquery.dataTables.min.js') !!}"></script>
  <script src="{!! asset('vendor/datatables/dataTables.bootstrap4.min.js') !!}"></script>

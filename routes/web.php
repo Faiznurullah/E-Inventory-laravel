@@ -73,6 +73,9 @@ Route::post('/insertbarangrusak', [KerusakanController::class, 'insert'])->name(
 Route::get('/databarangrusak', [KerusakanController::class, 'data'])->name('data');
 Route::get('/downloadpdfbarangrusak', [KerusakanController::class, 'downloadpdf'])->name('downloadpdf');
 
+// Coba Chart
+Route::get('/chart', [RelogController::class, 'chart'])->name('chart');
+
 });
 
 

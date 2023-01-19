@@ -38,7 +38,6 @@
                             <th>Jenis Barang</th>
                             <th>Kondis</th>
                             <th>Kode Barang</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +49,6 @@
                             <td>{{ $row->jenis_barang }}</td>
                             <td>{{ $row->kondisi }}</td>
                             <td>{{ $row->kode_barang }}</td>
-                            <td></td>
                         </tr>
                      @endforeach
                     </tbody>

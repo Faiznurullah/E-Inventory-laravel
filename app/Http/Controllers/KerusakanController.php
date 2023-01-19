@@ -26,7 +26,7 @@ class KerusakanController extends Controller
     {
       
       return view('dashboard.kerusakan.data', [
-        'kerusakan' => Kerusakan::where('kondisi', 'rusak')
+        'kerusakan' => Databarang::where('kondisi', 'rusak')->get()
        ]);
 
     }
