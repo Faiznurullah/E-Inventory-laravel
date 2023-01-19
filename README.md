@@ -5,7 +5,7 @@
 
 <p></p>
 
-<h4 align="center">Website penyimpan data sekolah yang dibuat dengan <a href="https://laravel.com/" target="_blank">Laravel</a>.
+<h4 align="center">Website penyimpan data barang yang dibuat dengan <a href="https://laravel.com/" target="_blank">Laravel</a>.
 </h4>
 
 <p></p>
