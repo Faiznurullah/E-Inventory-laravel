@@ -66,9 +66,21 @@ class PeminjamanController extends Controller
     }
     public function data()
     {
+        if(Auth::user()->kelas === 'admin'){
+
       return view('dashboard.peminjaman.data', [
         'peminjaman' => Peminjaman::all()
        ]);
+
+    }elseif(Auth::user()->kelas === 'user'){
+
+        return view('dashboard.peminjaman.data', [
+            'peminjaman' => Peminjaman::where('name_id', Auth::user()->id)->get()
+           ]);
+    
+
+    }
+
     }
     public function verifikasipeminjaman($id){
 
