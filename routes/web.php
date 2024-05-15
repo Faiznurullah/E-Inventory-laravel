@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers;
+use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelogController;
@@ -75,6 +76,17 @@ Route::get('/downloadpdfbarangrusak', [KerusakanController::class, 'downloadpdf'
 
 // Coba Chart
 Route::get('/chart', [RelogController::class, 'chart'])->name('chart');
+
+// manajemen Akun
+
+Route::get('/tambahakun', [AkunController::class, 'tambah'])->name('tambahakun');
+Route::post('/insertakun', [AkunController::class, 'insert'])->name('insertakun');
+Route::get('/dataakun', [AkunController::class, 'data'])->name('dataakun');
+Route::get('/editpengguna/{id}', [AkunController::class, 'edit'])->name('editpengguna');
+Route::post('/updatepengguna/{id}', [AkunController::class, 'update'])->name('update');
+Route::get('/hapuspengguna/{id}', [AkunController::class, 'hapus'])->name('hapus');
+Route::get('/downloadpdfpengguna', [AkunController::class, 'downloadpdf'])->name('downloadpdf');
+
 
 });
 
