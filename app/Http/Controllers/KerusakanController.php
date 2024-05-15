@@ -15,6 +15,7 @@ class KerusakanController extends Controller
     {
         $this->middleware(['auth','verified', 'checkRole:admin,user']);
     }
+    
 
     public function tambah()
     {

@@ -26,6 +26,7 @@ class PeminjamanTabel extends Migration
             $table->timestamps();
         });  
 
+        
     }
 
     /**

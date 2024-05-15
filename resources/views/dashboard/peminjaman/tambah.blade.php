@@ -31,7 +31,6 @@
                           </div>
                        </div>
 
-
                        <div class="col-md-6">
                         <label for="exampleFormControlSelect1">Foto Surat Peminjaman</label>
                        <div class="custom-file">

@@ -26,30 +26,28 @@ class GoogleController extends Controller
     {
         try {
             $user_google    = Socialite::driver('google')->user();
-            $user           = User::where('email', $user_google->getEmail())->first();
+            $user           = User::where('email', $user_google->getEmail())->first(); 
 
-            //jika user ada maka langsung di redirect ke halaman home
-            //jika user tidak ada maka simpan ke database
-            //$user_google menyimpan data google account seperti email, foto, dsb
-
-            if($user != null){
-                \auth()->login($user, true);
-                return redirect()->route('dashboard');
+            if($user !== null){
+                auth()->login($user, true); 
+                return redirect()->route('index');
             }else{
                 $create = User::Create([
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
-                    'password'          => 0,
-                    'email_verified_at' => now()
+                    'google_id'         => $user_google->getId(),
+                    'kelas'             => 'user',
+                    'password'          => 0, 
                 ]);
         
                 
-                \auth()->login($create, true);
-                return redirect()->route('dashboard');
+                auth()->login($create, true);
+                $request->user()->sendEmailVerificationNotification();
+                return view('auth.verify')->with('status', 'verification-link-sent');
             }
 
-        } catch (\Exception $e) {
-            return redirect()->route('login');
+        } catch (\Exception $e) { 
+         return redirect()->route('utama')->with('status', 'Gagal Masuk');
         }
 
 

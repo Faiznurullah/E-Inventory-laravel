@@ -14,7 +14,7 @@ use App\Http\Controllers\KerusakanController;
 
 Route::get('/', function () {
     return view('auth.register');
-});
+})->name('utama');
 
 Route::get('/login', function () {
     return view('auth.login');

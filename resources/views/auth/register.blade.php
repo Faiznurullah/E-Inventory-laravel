@@ -6,6 +6,14 @@
 
 <section class="vh-90">
     <div class="container h-90">
+
+
+      @if (session('status'))
+      <div class="alert alert-success" role="alert">
+          {{ session('status') }}.
+       </div>  
+      @endif
+
       <div class="row d-flex align-items-center justify-content-center mt-5">
         <div class="col-md-4 col-lg-5 col-xl-5">
           <img src="https://i.ibb.co/71P5gKJ/undraw-Investor-update-re-qnuu-removebg-preview.png"
