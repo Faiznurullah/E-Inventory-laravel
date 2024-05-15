@@ -13,12 +13,12 @@ class PeminjamanTabel extends Migration
      */
     public function up()
     {
-        Schema::create('Peminjaman_barang', function (Blueprint $table) {
+        Schema::create('peminjaman_barang', function (Blueprint $table) {
             $table->id();
             $table->string('peminjam');
-            $table->string('name');
-            $table->string('name_id');
+            $table->string('name');  
             $table->string('kode_barang');
+            $table->foreign('kode_barang')->references('kode_barang')->on('data_barang');
             $table->string('surat');
             $table->string('kondisi');
             $table->string('tersedia');

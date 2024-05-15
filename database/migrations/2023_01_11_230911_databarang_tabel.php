@@ -16,11 +16,12 @@ class DatabarangTabel extends Migration
         Schema::create('data_barang', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('jenis_barang');
+            $table->unsignedBigInteger('jenis_barang');
+            $table->foreign('jenis_barang')->references('id')->on('jenis_barang');
             $table->string('foto');
             $table->string('kondisi');
             $table->string('tersedia');
-            $table->string('kode_barang');
+            $table->string('kode_barang')->unique();;
         });
     }
 
