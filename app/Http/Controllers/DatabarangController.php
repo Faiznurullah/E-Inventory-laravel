@@ -19,7 +19,7 @@ class DatabarangController extends Controller
     {
         $this->middleware(['auth','verified', 'checkRole:admin,user']);
     }
-    public function tambah()
+    public function add()
     {
       
       return view('dashboard.databarang.tambah', [

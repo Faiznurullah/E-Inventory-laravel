@@ -26,10 +26,6 @@ Route::controller(GoogleController::class)->group(function(){
     Route::get('callback/google', 'handleGoogleCallback');
 });
 
-Route::controller(FacebookController::class)->group(function(){
-    Route::get('auth/facebook', 'redirecToFacebook')->name('auth.facebook');
-    Route::get('auth/facebook/callback', 'handlefacebookCallback');
-});
 
 
 
@@ -50,7 +46,7 @@ Route::get('/hapusjenisbarang/{id}', [JenisbarangController::class, 'hapus'])->n
 Route::get('/downloadpdfjenisbarang', [JenisbarangController::class, 'downloadpdf'])->name('downloadpdf');
 
 // Tambah data barang dan data barang
-Route::get('/tambahdatabarang', [DatabarangController::class, 'tambah'])->name('tambah');
+Route::get('/tambahdatabarang', [DatabarangController::class, 'add'])->name('add');
 Route::post('/insertdatabarang', [DatabarangController::class, 'insert'])->name('insert');
 Route::get('/databarang', [DatabarangController::class, 'data'])->name('data');
 Route::get('/detaildatabarang/{id}', [DatabarangController::class, 'detail'])->name('detail');
@@ -60,7 +56,7 @@ Route::post('/updatedatabarang/{id}', [DatabarangController::class, 'update'])->
 Route::get('/downloadpdfdatabarang', [DatabarangController::class, 'downloadpdfbarang'])->name('downloadpdfbarang');
 
 // Peminjaman barang
-Route::get('/peminjamanbarang', [PeminjamanController::class, 'tambah'])->name('tambah');
+Route::get('/peminjamanbarang', [PeminjamanController::class, 'add'])->name('add');
 Route::post('/insertpeminjaman', [PeminjamanController::class, 'insert'])->name('insert');
 Route::get('/datapeminjaman', [PeminjamanController::class, 'data'])->name('data');
 Route::post('/verifikasipeminjaman/{id}', [PeminjamanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
@@ -101,7 +97,7 @@ Route::get('/databarang', [DatabarangController::class, 'data'])->name('data');
 Route::get('/detaildatabarang/{id}', [DatabarangController::class, 'detail'])->name('detail');
 
 // Peminjaman barang
-Route::get('/peminjamanbarang', [PeminjamanController::class, 'tambah'])->name('tambah');
+Route::get('/peminjamanbarang', [PeminjamanController::class, 'add'])->name('add');
 Route::post('/insertpeminjaman', [PeminjamanController::class, 'insert'])->name('insert');
 Route::get('/datapeminjaman', [PeminjamanController::class, 'data'])->name('data');
 Route::post('/verifikasipeminjaman/{id}', [PeminjamanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
