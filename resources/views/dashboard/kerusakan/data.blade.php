@@ -46,7 +46,7 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $row->name }}</td>
-                            <td>{{ $row->jenis_barang }}</td>
+                            <td>{{ $row->jenisBarang->name }}</td>
                             <td>{{ $row->kondisi }}</td>
                             <td>{{ $row->kode_barang }}</td>
                         </tr>

@@ -36,7 +36,7 @@
                   @foreach($peminjaman as $row)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $row->name }} ({{ $row->peminjam }}-{{ $row->name_id }})</td>
+                        <td>{{ $row->name }} ({{ $row->peminjam }})</td>
                         <td>{{ $row->kode_barang }}</td>
                         <td><center>
                             @if($row->tersedia == 'ya')

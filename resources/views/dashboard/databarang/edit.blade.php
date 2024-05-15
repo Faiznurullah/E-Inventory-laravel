@@ -30,7 +30,7 @@
             <label for="exampleFormControlSelect1">Jenis Data Barang</label>
             <select class="form-control" id="exampleFormControlSelect1" name="jenis_barang">
                 @foreach($jenisbarang as $row)
-              <option value="{{ $row->name }}">{{ $row->name }}</option>
+              <option value="{{ $row->id }}">{{ $row->name }}</option>
               @endforeach
             </select>
           </div>

@@ -48,7 +48,7 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $row->name }}</td>
-                        <td>{{ $row->jenis_barang }}</td>
+                        <td>{{ $row->jenisBarang->name }}</td>
                         <td>{{ $row->kode_barang }}</td>
                         <td>{{ $row->tersedia }}</td>
                         @if(Auth::user()->kelas == 'admin')

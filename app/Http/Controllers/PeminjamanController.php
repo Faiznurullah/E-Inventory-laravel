@@ -49,8 +49,8 @@ class PeminjamanController extends Controller
            Peminjaman::create(
             [              
                 'peminjam' => $peminjam,
-                'name' => $name,          
-                'name_id' => $id,
+                'name' => $name,  
+                'user_id' => Auth::user()->id,  
                 'kode_barang' => $request->kode_barang,
                 'surat' => $filename,
                 'kondisi' => $kondisi,
@@ -75,7 +75,7 @@ class PeminjamanController extends Controller
     }elseif(Auth::user()->kelas === 'user'){
 
         return view('dashboard.peminjaman.data', [
-            'peminjaman' => Peminjaman::where('name_id', Auth::user()->id)->get()
+            'peminjaman' => Peminjaman::where('user_id', Auth::user()->id)->get()
            ]);
     
 
@@ -104,7 +104,7 @@ class PeminjamanController extends Controller
     {
 
        return view('dashboard.peminjaman.kembali', [
-        'data' => Peminjaman::where(['name_id' => Auth::user()->id, 'peminjam' => Auth::user()->name, 'tersedia' => 'tidak'])->get(),
+        'data' => Peminjaman::where(['user_id' => Auth::user()->id, 'peminjam' => Auth::user()->name, 'tersedia' => 'tidak'])->get(),
        ]);
 
     }

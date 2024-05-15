@@ -16,7 +16,7 @@ class Peminjaman extends Model
     protected $fillable = [
         'peminjam',
         'name',
-        'name_id',
+        'user_id',
         'kode_barang',
         'surat',
         'kondisi',
@@ -24,6 +24,8 @@ class Peminjaman extends Model
         'foto'
     ];
 
+
+  
  
     
 }

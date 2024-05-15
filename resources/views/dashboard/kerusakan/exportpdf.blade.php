@@ -53,7 +53,7 @@
           <tr class="mt-2">
             <td width="20%">{{ $i++ }}</td>
             <td>{{ $row->name  }}</td>
-            <td>{{ $row->jenis_barang  }}</td>
+            <td>{{ $row->jenisBarang->name }}</td>
             <td>{{ $row->kode_barang  }}</td>
             <td><img class="m-1" src="{{ public_path('/foto-barang/'.$row->foto) }}" alt="{{ $row->name }}" width="100px" height="100px"></td>
             <td>{{ $row->kondisi  }}</td>

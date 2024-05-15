@@ -24,4 +24,9 @@ class Databarang extends Model
 
     public $timestamps = false;
 
+    public function jenisBarang()
+    {
+        return $this->belongsTo(Jenisbarang::class, 'jenis_barang', 'id');
+    }
+
 }

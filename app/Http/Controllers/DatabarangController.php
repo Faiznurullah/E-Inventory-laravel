@@ -73,7 +73,7 @@ class DatabarangController extends Controller
     public function data()
     {
       return view('dashboard.databarang.data', [
-        'databarang' => Databarang::all()
+        'databarang' => Databarang::with('jenisBarang')->get()
        ]);
     }
     public function detail($id)
@@ -199,7 +199,7 @@ class DatabarangController extends Controller
     }
     public function downloadpdfbarang(){
 
-        $x = DB::table('data_barang')->get();
+        $x = Databarang::with('jenisBarang')->get();
         view()->share('data_barang', $x);
         $pdf = PDF::loadview('dashboard.databarang.exportpdf')->setPaper('a4', 'portrait');;
         return $pdf->download('data-barang.pdf');

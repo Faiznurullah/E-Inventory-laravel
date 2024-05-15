@@ -26,7 +26,7 @@
                   <tr>
                     <th scope="row">{{ $databarang->id }}</th>
                     <td>{{ $databarang->name }}</td>
-                    <td>{{ $databarang->jenis_barang }}</td>
+                    <td>{{ $databarang->jenisBarang->name }}</td>
                     <td>{{ $databarang->kode_barang }}</td>
                     <td><img class="m-1" src="{{ asset('/foto-barang/'.$databarang->foto) }}" alt="{{ $databarang->name }}" width="30%" height="30%"></td>
                     <td>{{ $databarang->kondisi }}</td>
