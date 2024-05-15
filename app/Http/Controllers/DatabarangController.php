@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\databarang as RequestsDatabarang;
 use file;
 use App\Models\Databarang;
 use App\Models\Jenisbarang;
@@ -25,26 +26,8 @@ class DatabarangController extends Controller
         'jenisbarang' => Jenisbarang::all()
        ]);
     }
-    public function insert(Request $request)
-    {       
-         
-     
-
-        $request->validate([
-            'name' => 'required',
-            'jenis_barang' => 'required',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2000',
-            'kondisi' => 'required',
-            'tersedia' => 'required'
-        ],[
-            'name.required' => 'Nama Wajib Diisi !!!',
-            'jenis_barang.required' => 'Jenis Barang Wajib Diisi !!!',
-            'foto.required' => 'Foto Wajib Diisi !!!',
-            'foto.mimes' => 'Hanya File Gambar !!!',
-            'kondisi.required' => 'Kondisi Wajib Diisi !!!',
-            'tersedia.required' => 'Ketersediaan Wajib Diisi !!!',
-        ]);
-
+    public function insert(RequestsDatabarang $request)
+    {     
         if ($request->hasfile('foto')) {            
             $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('foto')->getClientOriginalName());
             $request->file('foto')->move(public_path('foto-barang'), $filename);
@@ -129,7 +112,7 @@ class DatabarangController extends Controller
         return view('dashboard.databarang.edit', $data);
         
     }
-    public function update($id, Request $request)
+    public function update($id, RequestsDatabarang $request)
     {
         
         $x = Databarang::find($id);

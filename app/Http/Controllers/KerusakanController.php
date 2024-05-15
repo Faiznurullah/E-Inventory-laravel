@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\kerusakanbarang;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Kerusakan;
 use App\Models\Databarang;
@@ -31,15 +32,9 @@ class KerusakanController extends Controller
        ]);
 
     }
-    public function insert(Request $request)
+    public function insert(kerusakanbarang $request)
     {       
-      
-        $request->validate([
-            'kode_barang' => 'required'
-        ],[
-            'kode_barang.required' => 'Kode Wajib Diisi !!!',
-        ]);
-
+       
         $databarang = Databarang::where('kode_barang', $request->kode_barang)->first();
       
            Kerusakan::create([        

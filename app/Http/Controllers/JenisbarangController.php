@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\jenisbarang as RequestsJenisbarang;
 use App\Models\Jenisbarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,7 @@ class JenisbarangController extends Controller
         'jenisbarang' => Jenisbarang::all()
        ]);
     }
-    public function insert(Request $request)
+    public function insert(RequestsJenisbarang $request)
     {
        Request()->validate([
            'name' => 'required'
@@ -58,7 +59,7 @@ class JenisbarangController extends Controller
         return view('dashboard.jenisbarang.edit', $data);
         
     }
-    public function update($id, Request $request)
+    public function update($id, RequestsJenisbarang $request)
     {
         
         Request()->validate([

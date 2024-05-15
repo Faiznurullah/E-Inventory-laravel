@@ -19,7 +19,7 @@ class KerusakanTabel extends Migration
             $table->string('jenis_barang');
             $table->string('kondisi');
             $table->string('kode_barang');
-            $table->foreign('kode_barang')->references('kode_barang')->on('data_barang');
+            $table->foreign('kode_barang')->references('kode_barang')->on('data_barang')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

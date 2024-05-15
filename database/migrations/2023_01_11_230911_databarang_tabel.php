@@ -17,7 +17,7 @@ class DatabarangTabel extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('jenis_barang');
-            $table->foreign('jenis_barang')->references('id')->on('jenis_barang');
+            $table->foreign('jenis_barang')->references('id')->on('jenis_barang')->onDelete('cascade')->onUpdate('cascade');
             $table->string('foto');
             $table->string('kondisi');
             $table->string('tersedia');

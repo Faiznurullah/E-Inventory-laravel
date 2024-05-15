@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\peminjamanbarang;
 use App\Models\Databarang;
 use App\Models\Jenisbarang;
 use App\Models\Peminjaman;
@@ -22,18 +23,8 @@ class PeminjamanController extends Controller
         'data' => Databarang::where('tersedia', 'ya')->get(),
        ]);
     }
-    public function insert(Request $request)
-    {       
-         
-        $request->validate([
-            'kode_barang' => 'required',
-            'surat' => 'required|mimes:jpg,jpeg,png,pdf|max:2000'
-        ],[
-            'kode_barang.required' => 'Nama Wajib Diisi !!!',
-            'surat.required' => 'Foto Wajib Diisi !!!',
-            'surat.mimes' => 'Hanya File Gambar Dan Pdf !!!'
-        ]);
-
+    public function insert(peminjamanbarang $request)
+    {     
 
         if ($request->hasfile('surat')) {            
             $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('surat')->getClientOriginalName());
