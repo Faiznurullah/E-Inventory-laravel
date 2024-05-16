@@ -41,8 +41,8 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $row->name }}</td>
                         <td>
-                        <a href="/editjenisbarang/{{ $row->id }}" type="button" class="btn btn-info btn-sm">edit</a>
-                        <a href="/hapusjenisbarang/{{ $row->id }}" type="button" class="btn btn-warning text-white btn-sm">hapus</a>
+                        <a href="{{ route('category.edit', $row->id) }}" class="btn btn-info">Edit</a>
+                        <a href="{{ route('category.destroy', $row->id) }}" type="button" class="btn btn-warning text-white btn-sm">hapus</a>
                         </td>
                     </tr>
                  @endforeach

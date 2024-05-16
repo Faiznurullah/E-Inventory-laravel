@@ -14,17 +14,17 @@ class CategoryController extends Controller
         $this->category = $category;
         $this->middleware(['auth','verified', 'checkRole:admin']);
     }
-    public function tambah()
+    public function create()
     {
         return view('dashboard.category.add');
     }
-    public function data()
+    public function index()
     {
         return view('dashboard.category.index', [
             'datas' => $this->category->getAllData()
         ]);
     }
-    public function insert(RequestsCategory $request)
+    public function store(RequestsCategory $request)
     {
         
         $this->category->create($request->all());
@@ -62,10 +62,11 @@ class CategoryController extends Controller
 
 
     }
-    public function hapus($id){
+    public function destroy($id){
         $this->category->deleteById($id);  
         return redirect('/category')->with('Pesan', 'Data Sukses Dihapus');
     }
+    
     public function downloadpdf(){
         $x = $this->category->getAllData();
         view()->share('jenis_barang', $x);
