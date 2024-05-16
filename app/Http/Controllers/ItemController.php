@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Facade\FlareClient\Stacktrace\File as StacktraceFile;
 use Barryvdh\DomPDF\Facade\PDF;
 
-class DatabarangController extends Controller
+class ItemController extends Controller
 {
     public function __construct()
     {

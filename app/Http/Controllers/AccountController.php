@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AkunController extends Controller
+class AccountController extends Controller
 {
      
     public function tambah(){
@@ -65,6 +65,7 @@ class AkunController extends Controller
             'password' => $hashedPassword,
             'kelas' => $request->kelas 
         ];
+        
         User::where('id', $id)
         ->update($data);
 

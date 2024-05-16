@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class RelogController extends Controller
+class OtherController extends Controller
 {
  
     public function __construct()

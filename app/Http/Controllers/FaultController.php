@@ -9,7 +9,7 @@ use App\Models\Databarang;
 use Illuminate\Http\Request;
 
 
-class KerusakanController extends Controller
+class FaultController extends Controller
 {
    
     public function __construct()

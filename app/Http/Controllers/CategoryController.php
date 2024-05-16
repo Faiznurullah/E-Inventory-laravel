@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\PDF;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
-class JenisbarangController extends Controller
+class CategoryController extends Controller
 {
     public function __construct()
     {

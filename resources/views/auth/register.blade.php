@@ -75,10 +75,7 @@
   
           </form>
 
-           <a href="{{ 'auth/google' }}" class="btn btn-outline-danger btn-lg btn-block mt-2"><i class="bi bi-google"></i> Sign up With Google</a>
-          
-            <a href="{{ Route('auth.facebook') }}"  class="btn btn-outline-primary btn-lg btn-block mt-2"><i class="bi bi-facebook"></i> Sign up With Facebook</a>
-          
+           <a href="{{ 'auth/google' }}" class="btn btn-outline-danger btn-lg btn-block mt-2"><i class="bi bi-google"></i> Sign up With Google</a>          
 
           </div>
       </div>
