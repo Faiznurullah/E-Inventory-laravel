@@ -31,78 +31,40 @@ Route::controller(GoogleController::class)->group(function(){
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['verified', 'checkRole:admin']], function(){
-
 Route::get('/dashboard', [OtherController::class, 'index'])->name('index');
 Route::get('/logout', [OtherController::class, 'logout'])->name('logout');
 
+Route::post('/returnverification', [LoanController::class, 'verifikasikembali'])->name('verifikasikembali');
+Route::post('/loanverification/{id}', [LoanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
+Route::post('/returnverification/{id}', [LoanController::class, 'verifikasipengembalian'])->name('verifikasipengembalian');
+Route::resource('loan', LoanController::class);
+
+Route::get('/item', [ItemController::class, 'data'])->name('data');
+Route::get('/item/{id}', [ItemController::class, 'detail'])->name('detail');
+
+Route::group(['middleware' => ['verified', 'checkRole:admin']], function(){
+ 
+
 // Tambah Jenis Barang dan Data Jenis Barang
-Route::get('/tambahjenisbarang', [CategoryController::class, 'tambah'])->name('tambah');
-Route::post('/insertjenisbarang', [CategoryController::class, 'insert'])->name('insert');
-Route::get('/datajenisbarang', [CategoryController::class, 'data'])->name('data');
-Route::get('/editjenisbarang/{id}', [CategoryController::class, 'edit'])->name('edit');
-Route::post('/updatejenisbarang/{id}', [CategoryController::class, 'update'])->name('update');
-Route::get('/hapusjenisbarang/{id}', [CategoryController::class, 'hapus'])->name('hapus');
-Route::get('/downloadpdfjenisbarang', [CategoryController::class, 'downloadpdf'])->name('downloadpdf');
+Route::get('/downloadcategorypdf', [CategoryController::class, 'downloadpdf'])->name('downloadpdf');
+Route::resource('category', CategoryController::class);
 
 // Tambah data barang dan data barang
-Route::get('/tambahdatabarang', [ItemController::class, 'add'])->name('add');
-Route::post('/insertdatabarang', [ItemController::class, 'insert'])->name('insert');
-Route::get('/databarang', [ItemController::class, 'data'])->name('data');
-Route::get('/detaildatabarang/{id}', [ItemController::class, 'detail'])->name('detail');
-Route::get('/hapusdatabarang/{id}', [ItemController::class, 'hapus'])->name('hapus');
-Route::get('/editdatabarang/{id}', [ItemController::class, 'edit'])->name('edit');
-Route::post('/updatedatabarang/{id}', [ItemController::class, 'update'])->name('update');
-Route::get('/downloadpdfdatabarang', [ItemController::class, 'downloadpdfbarang'])->name('downloadpdfbarang');
+Route::get('/downloaditempdf', [ItemController::class, 'downloadpdfbarang'])->name('downloadpdfbarang');
+Route::resource('item', ItemController::class);
 
-// Peminjaman barang
-Route::get('/peminjamanbarang', [LoanController::class, 'add'])->name('add');
-Route::post('/insertpeminjaman', [LoanController::class, 'insert'])->name('insert');
-Route::get('/datapeminjaman', [LoanController::class, 'data'])->name('data');
-Route::post('/verifikasipeminjaman/{id}', [LoanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
-Route::get('/pengembalianbarang', [LoanController::class, 'kembali'])->name('kembali');
-Route::post('/verifikasikembali', [LoanController::class, 'verifikasikembali'])->name('verifikasikembali');
-Route::post('/verifikasipengembalian/{id}', [LoanController::class, 'verifikasipengembalian'])->name('verifikasipengembalian');
-
+ 
 // Kerusakan Barang
-Route::get('/barangrusak', [FaultController::class, 'tambah'])->name('tambah');
-Route::post('/insertbarangrusak', [FaultController::class, 'insert'])->name('insert');
-Route::get('/databarangrusak', [FaultController::class, 'data'])->name('data');
-Route::get('/downloadpdfbarangrusak', [FaultController::class, 'downloadpdf'])->name('downloadpdf');
+Route::resource('fault', FaultController::class);
+Route::get('/downloadfaultpdf', [FaultController::class, 'downloadpdf'])->name('downloadpdf');
 
 // Coba Chart
 Route::get('/chart', [OtherController::class, 'chart'])->name('chart');
 
 // manajemen Akun
-Route::get('/tambahakun', [AccountController::class, 'tambah'])->name('tambahakun');
-Route::post('/insertakun', [AccountController::class, 'insert'])->name('insertakun');
-Route::get('/dataakun', [AccountController::class, 'data'])->name('dataakun');
-Route::get('/editpengguna/{id}', [AccountController::class, 'edit'])->name('editpengguna');
-Route::post('/updatepengguna/{id}', [AccountController::class, 'update'])->name('update');
-Route::get('/hapuspengguna/{id}', [AccountController::class, 'hapus'])->name('hapus');
-Route::get('/downloadpdfpengguna', [AccountController::class, 'downloadpdf'])->name('downloadpdf');
+Route::resource('account', AccountController::class);
+Route::get('/downloaduserspdf', [AccountController::class, 'downloadpdf'])->name('downloadpdf');
 
 
 });
 
-
-Route::group(['middleware' => ['verified', 'checkRole:admin,user']], function(){
-
-Route::get('/dashboard', [OtherController::class, 'index'])->name('index');
-Route::get('/logout', [OtherController::class, 'logout'])->name('logout');
-
-
-Route::get('/databarang', [ItemController::class, 'data'])->name('data');
-Route::get('/detaildatabarang/{id}', [ItemController::class, 'detail'])->name('detail');
-
-// Peminjaman barang
-Route::get('/peminjamanbarang', [LoanController::class, 'add'])->name('add');
-Route::post('/insertpeminjaman', [LoanController::class, 'insert'])->name('insert');
-Route::get('/datapeminjaman', [LoanController::class, 'data'])->name('data');
-Route::post('/verifikasipeminjaman/{id}', [LoanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
-Route::get('/pengembalianbarang', [LoanController::class, 'kembali'])->name('kembali');
-Route::post('/verifikasikembali', [LoanController::class, 'verifikasikembali'])->name('verifikasikembali');
-Route::post('/verifikasipengembalian/{id}', [LoanController::class, 'verifikasipengembalian'])->name('verifikasipengembalian');
-
-
-});
