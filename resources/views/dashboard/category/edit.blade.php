@@ -10,13 +10,13 @@
         </div>
         <div class="card-body" style="height: 200px;">
            
-            <form action="/updatejenisbarang/{{ $jenisbarang->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/updatejenisbarang/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
    <div class="row">
        <div class="col-md-6">
         <label for="exampleFormControlInput1" class="form-label">Nama Jenis Barang:</label>
-        <input type="text" class="form-control  @error('name') is-invalid @enderror is-valid" value="{{ $jenisbarang->name }}" name="name" id="exampleFormControlInput1" placeholder="Jenis Barang Contoh:Kursi">
+        <input type="text" class="form-control  @error('name') is-invalid @enderror is-valid" value="{{ $data->name }}" name="name" id="exampleFormControlInput1" placeholder="Jenis Barang Contoh:Kursi">
         <div class="valid-feedback">
           @error('name')
 <div class="alert alert-danger">{{ $message }}</div>

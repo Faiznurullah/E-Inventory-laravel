@@ -5,18 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kerusakan extends Model
+class Item extends Model
 {
     use HasFactory;
 
-    protected $table = "kerusakan";
+    protected $table = "data_barang";
 
     protected $primaryKey = "id";
 
     protected $fillable = [
     	'name',
         'jenis_barang',
+        'foto',
         'kondisi',
+        'tersedia',
         'kode_barang'
     ];
 
@@ -24,8 +26,7 @@ class Kerusakan extends Model
 
     public function jenisBarang()
     {
-        return $this->belongsTo(Jenisbarang::class, 'jenis_barang', 'id');
+        return $this->belongsTo(Category::class, 'jenis_barang', 'id');
     }
-
 
 }

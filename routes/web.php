@@ -34,9 +34,9 @@ Auth::routes(['verify' => true]);
 Route::get('/dashboard', [OtherController::class, 'index'])->name('index');
 Route::get('/logout', [OtherController::class, 'logout'])->name('logout');
 
-Route::post('/returnverification', [LoanController::class, 'verifikasikembali'])->name('verifikasikembali');
-Route::post('/loanverification/{id}', [LoanController::class, 'verifikasipeminjaman'])->name('verifikasipeminjaman');
-Route::post('/returnverification/{id}', [LoanController::class, 'verifikasipengembalian'])->name('verifikasipengembalian');
+Route::post('/returnverification', [LoanController::class, 'return'])->name('return');
+Route::post('/loanverification/{id}', [LoanController::class, 'loan'])->name('loan');
+Route::post('/returnverification/{id}', [LoanController::class, 'returnbyid'])->name('returnbyid');
 Route::resource('loan', LoanController::class);
 
 Route::get('/item', [ItemController::class, 'data'])->name('data');
@@ -46,24 +46,24 @@ Route::group(['middleware' => ['verified', 'checkRole:admin']], function(){
  
 
 // Tambah Jenis Barang dan Data Jenis Barang
-Route::get('/downloadcategorypdf', [CategoryController::class, 'downloadpdf'])->name('downloadpdf');
+Route::get('/downloadcategorypdf', [CategoryController::class, 'download'])->name('download');
 Route::resource('category', CategoryController::class);
 
 // Tambah data barang dan data barang
-Route::get('/downloaditempdf', [ItemController::class, 'downloadpdfbarang'])->name('downloadpdfbarang');
+Route::get('/downloaditempdf', [ItemController::class, 'download'])->name('downloadpdfbarang');
 Route::resource('item', ItemController::class);
 
  
 // Kerusakan Barang
 Route::resource('fault', FaultController::class);
-Route::get('/downloadfaultpdf', [FaultController::class, 'downloadpdf'])->name('downloadpdf');
+Route::get('/downloadfaultpdf', [FaultController::class, 'download'])->name('download');
 
 // Coba Chart
 Route::get('/chart', [OtherController::class, 'chart'])->name('chart');
 
 // manajemen Akun
 Route::resource('account', AccountController::class);
-Route::get('/downloaduserspdf', [AccountController::class, 'downloadpdf'])->name('downloadpdf');
+Route::get('/downloaduserspdf', [AccountController::class, 'download'])->name('download');
 
 
 });
