@@ -41,6 +41,7 @@ class databarang extends FormRequest
             'name.required' => ':attributes wajib ada', 
             'jenis_barang.required' => ':attributes wajib ada', 
             'foto.required' => ':attributes wajib ada', 
+            'foto.image' => ':attributes wajib gambar', 
             'kondisi.required' => ':attributes wajib ada', 
             'tersedia.required' => ':attributes wajib ada', 
         ];

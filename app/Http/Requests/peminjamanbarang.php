@@ -44,6 +44,7 @@ class peminjamanbarang extends FormRequest
              'peminjam.required' => ':attributes wajib ada',
              'user_id.required' => ':attributes wajib ada',
              'surat.required' => ':attributes wajib ada',
+             'surat.image' => ':attributes wajib gambar',
              'kondisi.required' => ':attributes wajib ada',
              'tersedia.required' => ':attributes wajib ada' 
          ];
