@@ -10,14 +10,16 @@
         </div>
         <div class="card-body">
            
-            <form action="/updatedatabarang/{{ $databarang->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/item/{{ $item->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
+
 
    <div class="row">
 
        <div class="col-md-6">
         <label for="exampleFormControlInput1" class="form-label">Nama Data Barang:</label>
-        <input type="text" class="form-control  @error('name') is-invalid @enderror is-valid" value="{{ $databarang->name }}" name="name" id="exampleFormControlInput1" placeholder="Jenis Barang Contoh:Kursi">
+        <input type="text" class="form-control  @error('name') is-invalid @enderror is-valid" value="{{ $item->name }}" name="name" id="exampleFormControlInput1" placeholder="Jenis Barang Contoh:Kursi">
         <div class="valid-feedback">
           @error('name')
      <div class="alert alert-danger">{{ $message }}</div>
@@ -29,7 +31,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Jenis Data Barang</label>
             <select class="form-control" id="exampleFormControlSelect1" name="jenis_barang">
-                @foreach($jenisbarang as $row)
+                @foreach($category as $row)
               <option value="{{ $row->id }}">{{ $row->name }}</option>
               @endforeach
             </select>

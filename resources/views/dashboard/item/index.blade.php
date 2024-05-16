@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>          
-                  @foreach($databarang as $row)
+                  @foreach($datas as $row)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $row->name }}</td>

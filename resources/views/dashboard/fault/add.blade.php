@@ -10,7 +10,7 @@
         </div>
         <div class="card-body" style="height: 200px;">
 
-            <form action="/insertbarangrusak" method="POST" enctype="multipart/form-data">
+            <form action="/fault" method="POST" enctype="multipart/form-data">
                 @csrf
            
             <div class="row">
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Data Barang</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="kode_barang">
-                            @foreach($databarang as $row)
+                            @foreach($datas as $row)
                           <option value="{{ $row->kode_barang }}">{{ $row->name }} | {{ $row->kode_barang }}</option>
                           @endforeach
                         </select>

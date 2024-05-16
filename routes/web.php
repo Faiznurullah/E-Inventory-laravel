@@ -39,8 +39,8 @@ Route::post('/loanverification/{id}', [LoanController::class, 'loan'])->name('lo
 Route::post('/returnverification/{id}', [LoanController::class, 'returnbyid'])->name('returnbyid');
 Route::resource('loan', LoanController::class);
 
-Route::get('/item', [ItemController::class, 'data'])->name('data');
-Route::get('/item/{id}', [ItemController::class, 'detail'])->name('detail');
+Route::get('/item', [ItemController::class, 'index'])->name('index');
+Route::get('/item/{id}', [ItemController::class, 'show'])->name('show');
 
 Route::group(['middleware' => ['verified', 'checkRole:admin']], function(){
  
@@ -50,7 +50,7 @@ Route::get('/downloadcategorypdf', [CategoryController::class, 'download'])->nam
 Route::resource('category', CategoryController::class);
 
 // Tambah data barang dan data barang
-Route::get('/downloaditempdf', [ItemController::class, 'download'])->name('downloadpdfbarang');
+Route::get('/downloaditempdf', [ItemController::class, 'download'])->name('download');
 Route::resource('item', ItemController::class);
 
  

@@ -49,11 +49,11 @@
             <th scope="col">kondisi</th>
           </tr>
          @php $i=1 @endphp
-         @foreach($data_barang as $row)
+         @foreach($datas as $row)
           <tr class="mt-2">
             <td width="20%">{{ $i++ }}</td>
             <td>{{ $row->name  }}</td>
-            <td>{{ $row->jenisBarang->name }}</td>
+            <td>{{ $row->getCategory->name }}</td>
             <td>{{ $row->kode_barang  }}</td>
             <td><img class="m-1" src="{{ public_path('/foto-barang/'.$row->foto) }}" alt="{{ $row->name }}" width="100px" height="100px"></td>
             <td>{{ $row->kondisi  }}</td>

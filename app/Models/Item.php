@@ -52,5 +52,10 @@ class Item extends Model
         return $this->where('id', $id)->delete();
     }
 
-    
+    public static function getWithCategory()
+    {
+        return self::with('getCategory')->get();
+    }
+
+
 }

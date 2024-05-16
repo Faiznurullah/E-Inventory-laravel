@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\kerusakanbarang;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Kerusakan;
-use App\Models\Databarang;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 

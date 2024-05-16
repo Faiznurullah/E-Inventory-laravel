@@ -24,18 +24,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">{{ $databarang->id }}</th>
-                    <td>{{ $databarang->name }}</td>
-                    <td>{{ $databarang->jenisBarang->name }}</td>
-                    <td>{{ $databarang->kode_barang }}</td>
-                    <td><img class="m-1" src="{{ asset('/foto-barang/'.$databarang->foto) }}" alt="{{ $databarang->name }}" width="30%" height="30%"></td>
-                    <td>{{ $databarang->kondisi }}</td>
-                    <td>{{ $databarang->tersedia }}</td>
+                    <th scope="row">{{ $datas->id }}</th>
+                    <td>{{ $datas->name }}</td>
+                    <td>{{ $datas->jenisBarang->name }}</td>
+                    <td>{{ $datas->kode_barang }}</td>
+                    <td><img class="m-1" src="{{ asset('/foto-barang/'.$datas->foto) }}" alt="{{ $datas->name }}" width="30%" height="30%"></td>
+                    <td>{{ $datas->kondisi }}</td>
+                    <td>{{ $datas->tersedia }}</td>
                   </tr>
                   <tr>
                     <td colspan="5"></td>
                     <td colspan="2">
-                      <center><a href="/databarang" type="button" class="btn btn-success btn-sm">Kembali</a></center>
+                      <center><a href="/item" type="button" class="btn btn-success btn-sm">Kembali</a></center>
                     </td>
                   </tr>
                 </tbody>
