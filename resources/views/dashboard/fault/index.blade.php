@@ -19,12 +19,9 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     @if(Auth::user()->kelas == 'admin')
-                    <a href="/downloadpdfbarangrusak" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Download PDF</a>
-                            @elseif(Auth::user()->kelas == 'user')
-                             
-                            @endif
-            
+                    <a href="/downloadfaultpdf" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
+                        class="fas fa-download fa-sm text-white-50"></i> Download PDF</a> 
+                    @endif 
             </div>
         </div>
 

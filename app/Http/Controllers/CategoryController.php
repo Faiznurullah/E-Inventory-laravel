@@ -67,7 +67,7 @@ class CategoryController extends Controller
         return redirect('/category')->with('Pesan', 'Data Sukses Dihapus');
     }
     
-    public function downloadpdf(){
+    public function download(){
         $x = $this->category->getAllData();
         view()->share('jenis_barang', $x);
         $pdf = PDF::loadview('dashboard.category.exportpdf')->setPaper('a4', 'portrait');;

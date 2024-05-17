@@ -10,13 +10,20 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-     
-    public function tambah(){
 
-        return view('dashboard.pengguna.add');
+    private $user;
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+        $this->middleware(['auth','verified', 'checkRole:admin']);
     }
 
-    public function insert(Request $request){
+     
+    public function create(){
+        return view('dashboard.user.add');
+    }
+
+    public function store(Request $request){
         
         $hashedPassword = Hash::make($request->password);
         $data = [
@@ -27,31 +34,31 @@ class AccountController extends Controller
             'email_verified_at' => now()
         ];
 
-       $data_insert = User::create($data);
+        $this->user->create($data);
 
-       return redirect('/dataakun')->with('Pesan', 'Data Sukses Dikirim');
+       return redirect('/user')->with('Pesan', 'Data Sukses Dikirim');
         
     }
 
-    public function data(){
-        return view('dashboard.pengguna.index',  [
-            'data' => User::where('id', '!=', Auth::user()->id)->get()
+    public function index(){
+        return view('dashboard.user.index',  [
+            'datas' => User::where('id', '!=', Auth::user()->id)->get()
            ]);
     }
 
     public function edit($id)
     {
-        $x = User::find($id);
+        $x = $this->user->findById($id);
 
         if(!$x){ 
         abort(404); 
         }
 
         $data = [
-            'data' => $x,
-        ];
+            'datas' => $x,
+        ]; 
 
-        return view('dashboard.pengguna.edit', $data);
+        return view('dashboard.user.edit', $data);
         
     }
 
@@ -64,27 +71,24 @@ class AccountController extends Controller
             'email' => $request->email,
             'password' => $hashedPassword,
             'kelas' => $request->kelas 
-        ];
+        ]; 
         
-        User::where('id', $id)
-        ->update($data);
+         $this->user->update($id, $data);
 
-
-     return redirect('/dataakun')->with('Pesan', 'Data Sukses Diedit');
+     return redirect('/user')->with('Pesan', 'Data Sukses Diedit');
 
     }
 
     public function hapus($id){
-        $x = User::find($id);
-        $x->delete();
-        return redirect('/dataakun')->with('Pesan', 'Data Sukses Dihapus');
+        $this->user->delete($id);
+        return redirect('/user')->with('Pesan', 'Data Sukses Dihapus');
 
      }
 
-     public function downloadpdf(){ 
-        $x = User::all();
-        view()->share('data', $x);
-        $pdf = PDF::loadview('dashboard.pengguna.exportpdf')->setPaper('a4', 'portrait');;
+     public function download(){ 
+        $x = $this->user->getAllData();
+        view()->share('datas', $x);
+        $pdf = PDF::loadview('dashboard.user.exportpdf')->setPaper('a4', 'portrait');;
         return $pdf->download('data-pengguna.pdf'); 
        }
 

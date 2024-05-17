@@ -48,12 +48,12 @@ class FaultController extends Controller
       'kondisi' => 'rusak'
     ]; 
     $this->item->updateData($dataItem->id, $data); 
-    
+
     return redirect('/fault')->with('Pesan', 'Data Sukses Dikirim');    
     
   }
   
-  public function downloadpdf(){ 
+  public function download(){ 
     $x = $this->item->getBadCondition();
     view()->share('data', $x);
     $pdf = PDF::loadview('dashboard.fault.exportpdf')->setPaper('a4', 'portrait');;

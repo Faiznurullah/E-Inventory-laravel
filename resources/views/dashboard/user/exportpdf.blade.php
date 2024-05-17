@@ -47,7 +47,7 @@
             <th scope="col">Level</th>
           </tr>
          @php $i=1 @endphp
-         @foreach($data as $row)
+         @foreach($datas as $row)
           <tr class="mt-2">
             <td width="20%">{{ $i++ }}</td>
             <td>{{ $row->name  }}</td>
