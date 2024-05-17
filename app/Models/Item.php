@@ -78,4 +78,20 @@ class Item extends Model
         return $this->where('tersedia', 'ya')->get();
     }
 
+    public function count()
+    {
+        return $this->count();
+    }
+
+    public function goodDataCount()
+    {
+        return $this->where('kondisi', 'baik')->count();
+    }
+
+    public function badDataCount()
+    {
+        return $this->where('kondisi', 'rusak')->count();
+    }
+
+
 }

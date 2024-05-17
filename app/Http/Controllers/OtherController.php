@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Databarang;
+use App\Models\Item;
 use App\Models\Peminjaman;
 use App\Models\Jenisbarang;
+use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,18 +16,26 @@ use Illuminate\Support\Facades\DB;
 class OtherController extends Controller
 {
  
-    public function __construct()
+    private $item;
+    private $category;
+    private $loan;
+    private $user;
+    public function __construct(Item $item, Category $category, Loan $loan, User $user)
     {
+        $this->item = $item;
+        $this->category = $category;
+        $this->loan = $loan;
+        $this->user = $user;
         $this->middleware(['auth','verified', 'checkRole:admin,user']);
     }
 
     
     public function index()
     {
-        $x = Jenisbarang::count();
-        $y = Databarang::count();
-        $z = Peminjaman::count();
-        $a = User::where('id', Auth::user()->id)->first();
+        $x = $this->item->count();
+        $y = $this->category->count();
+        $z = $this->loan->count();
+        $a = $this->user->getDataById(Auth::user()->id);
 
         return view('dashboard.dashboard', compact('x', 'y', 'z', 'a'));
         
@@ -51,11 +62,11 @@ class OtherController extends Controller
             }
 
          
-            $baik = Databarang::where('kondisi', 'baik')->count();
-            $rusak = Databarang::where('kondisi', 'rusak')->count();
-            $jumlah_brng = Databarang::count();
+            $baik = $this->item->goodDataCount();
+            $rusak = $this->item->badDataCount();
+            $jumlah_brng = $this->item->count();
 
-        return view('dashboard.chart', compact('jumlah_user','label', 'peminjaman_barang', 'baik', 'rusak', 'jumlah_brng'));
+         return view('dashboard.chart', compact('jumlah_user','label', 'peminjaman_barang', 'baik', 'rusak', 'jumlah_brng'));
         
     }
 

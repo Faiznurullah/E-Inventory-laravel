@@ -68,5 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->where('id', $id)->delete();
     }
 
+    public function getDataById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
     
 }

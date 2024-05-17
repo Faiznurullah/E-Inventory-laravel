@@ -53,7 +53,11 @@ class Loan extends Model
     {
         return $this->where('id', $id)->delete();
     }
-
+    
+    public function count()
+    {
+        return $this->count();
+    }
  
     
 }
