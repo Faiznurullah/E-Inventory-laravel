@@ -43,4 +43,34 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAllData()
+    {
+        return $this->latest()->get();
+    }
+
+    public function create($data){
+        return $this->create($data);
+    }
+
+    public function findById($id)
+    {
+        return $this->find($id);
+    }
+
+    public function updateData($id, $data)
+    {
+        return $this->where('id', $id)->update($data);
+    }
+
+    public function deleteById($id)
+    {
+        return $this->where('id', $id)->delete();
+    }
+
+    public function getDataById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+    
 }
