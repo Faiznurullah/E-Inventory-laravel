@@ -12,7 +12,7 @@
      </div>
      <div class="card-body">
 
-        <form action="/verifikasikembali" method="POST" enctype="multipart/form-data">
+        <form action="/returnverification" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row">

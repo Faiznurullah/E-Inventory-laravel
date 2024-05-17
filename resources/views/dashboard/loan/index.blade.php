@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>          
-                  @foreach($peminjaman as $row)
+                  @foreach($datas as $row)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $row->name }} ({{ $row->peminjam }})</td>
@@ -84,7 +84,7 @@
 
                                @if($row->tersedia === 'ya')
 
-                               <form action="/verifikasipeminjaman/{{ $row->id }}" method="POST" enctype="multipart/form-data">
+                               <form action="/loanverification/{{ $row->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf                
                                 <button class="btn btn-success btn-sm" type="submit">Verifikasi Peminjaman</button>
                                </form>
@@ -96,7 +96,7 @@
                                   
                                @elseif($row->tersedia === 'kembali')
 
-                               <form action="/verifikasipengembalian/{{ $row->id }}" method="POST" enctype="multipart/form-data">
+                               <form action="/returnverification/{{ $row->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf   
                                <button class="btn btn-success btn-sm">Verifikasi Pengembalian</button>
                                </form>

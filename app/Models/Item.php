@@ -51,6 +51,11 @@ class Item extends Model
         return $this->where('id', $id)->update($data);
     }
 
+    public function updateDataByCode($id, $data)
+    {
+        return $this->where('kode_barang', $id)->update($data);
+    }
+
     public function deleteById($id)
     {
         return $this->where('id', $id)->delete();
@@ -67,6 +72,10 @@ class Item extends Model
 
     public function getBadCondition(){
         return $this->where('kondisi', 'rusak')->get();
+    }
+
+    public function getDataReady(){
+        return $this->where('tersedia', 'ya')->get();
     }
 
 }

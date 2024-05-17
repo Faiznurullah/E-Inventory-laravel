@@ -39,6 +39,11 @@ class Loan extends Model
         return $this->find($id);
     }
 
+    public function getDataByUserId($id)
+    {
+        return $this->where('User_id', $id)->get();
+    }
+
     public function updateData($id, $data)
     {
         return $this->where('id', $id)->update($data);
