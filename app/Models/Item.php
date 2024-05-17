@@ -42,6 +42,10 @@ class Item extends Model
         return $this->find($id);
     }
 
+    public function getDataByCode($code){
+        return $this->where('kode_barang', $code)->first();
+    }
+
     public function updateData($id, $data)
     {
         return $this->where('id', $id)->update($data);
@@ -57,5 +61,12 @@ class Item extends Model
         return self::with('getCategory')->get();
     }
 
+    public function getGoodCondition(){
+        return $this->where('kondisi', 'baik')->get();
+    }
+
+    public function getBadCondition(){
+        return $this->where('kondisi', 'rusak')->get();
+    }
 
 }

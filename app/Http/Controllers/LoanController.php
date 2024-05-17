@@ -16,7 +16,7 @@ class LoanController extends Controller
     {
         $this->middleware(['auth','verified', 'checkRole:admin,user']);
     }
-    public function add()
+    public function create()
     {
 
       return view('dashboard.peminjaman.tambah', [

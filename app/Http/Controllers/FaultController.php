@@ -2,64 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\kerusakanbarang;
+use App\Http\Requests\Fault as RequestFault;
 use Barryvdh\DomPDF\Facade\PDF;
-use App\Models\Kerusakan;
-use App\Models\Item;
-use Illuminate\Http\Request;
+use App\Models\Fault;
+use App\Models\Item; 
 
 
 class FaultController extends Controller
 {
-   
-    public function __construct()
-    {
-        $this->middleware(['auth','verified', 'checkRole:admin,user']);
-    }
+  private $item;
+  private $fault;
+  public function __construct(Item $item, Fault $fault)
+  {
+    $this->item = $item;
+    $this->fault = $fault;
+    $this->middleware(['auth','verified', 'checkRole:admin,user']);
+  }
+  
+  
+  public function create()
+  {
+    return view('dashboard.fault.add', [
+      'datas' => $this->item->getGoodCondition()
+    ]);
+  }
+  public function index()
+  {
     
-
-    public function tambah()
-    {
-      return view('dashboard.kerusakan.tambah', [
-        'databarang' => Databarang::where('kondisi', 'baik')->get()
-       ]);
-    }
-    public function data()
-    {
-      
-      return view('dashboard.kerusakan.data', [
-        'kerusakan' => Databarang::where('kondisi', 'rusak')->get()
-       ]);
-
-    }
-    public function insert(kerusakanbarang $request)
-    {       
-       
-        $databarang = Databarang::where('kode_barang', $request->kode_barang)->first();
-      
-           Kerusakan::create([        
-                'name' => $databarang->name,          
-                'jenis_barang' => $databarang->jenis_barang,
-                'kondisi' => 'rusak',
-                'kode_barang' => $databarang->kode_barang
-            ]);
-
-            Databarang::where('kode_barang', $databarang->kode_barang)
-             ->update([
-                    'kondisi' => 'rusak'
-             ]);
+    return view('dashboard.fault.index', [
+      'datas' => $this->item->getBadCondition()
+    ]);
     
-        return redirect('/databarangrusak')->with('Pesan', 'Data Sukses Dikirim');    
-       
-    }
-
-    public function downloadpdf(){
-
-        $x = Databarang::where('kondisi', 'rusak')->get();
-        view()->share('data_barang', $x);
-        $pdf = PDF::loadview('dashboard.kerusakan.exportpdf')->setPaper('a4', 'portrait');;
-        return $pdf->download('data-barang.pdf');
+  }
+  public function store(RequestFault $request)
+  {    
+    $dataItem = $this->item->getDataByCode($request->kode_barang);
+    $data = [        
+      'name' => $dataItem->name,          
+      'jenis_barang' => $dataItem->jenis_barang,
+      'kondisi' => 'rusak',
+      'kode_barang' => $dataItem->kode_barang
+    ]; 
+    $this->fault->create($data); 
+    $data = [
+      'kondisi' => 'rusak'
+    ]; 
+    $this->item->updateData($dataItem->id, $data); 
     
-       }
-
+    return redirect('/fault')->with('Pesan', 'Data Sukses Dikirim');    
+    
+  }
+  
+  public function downloadpdf(){ 
+    $x = $this->item->getBadCondition();
+    view()->share('data', $x);
+    $pdf = PDF::loadview('dashboard.fault.exportpdf')->setPaper('a4', 'portrait');;
+    return $pdf->download('data-barang.pdf'); 
+  }
+  
 }
